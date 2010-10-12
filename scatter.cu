@@ -10,7 +10,8 @@ int main(void){
 
   thrust::device_vector<int> dmap(map, map+10);
   thrust::device_vector<int> output(10);
-  thrust::scatter(input, input+10, dmap.begin(), output.begin());
+  thrust::scatter(input, input+10, dmap.begin()+0 , output.begin()+0);
+  std::cout << dmap+0 << std::endl;
   for(int i=0; i<10; i++){
     std::cout << output[i];
   }
