@@ -1,1 +1,1 @@
-nvcc -I $HOME/local/thrust $@
+nvcc -I $HOME/local/thrust -I $HOME/local/thrust/testing $@
