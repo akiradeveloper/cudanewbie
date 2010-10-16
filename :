@@ -16,10 +16,9 @@ int main(void){
   thrust::sort_by_key(
     thrust::make_transform_iterator(d_keys.begin(), thrust::absolute_value<int>()),
     thrust::make_transform_iterator(d_keys.end(), thrust::absolute_value<int>()),
-    // thrust::make_zip_iterator(thrust::make_tuple(d_keys.begin(), d_values.begin(), d_values2.begin())));
-    thrust::make_zip_iterator(thrust::make_tuple(thrust::make_tuple(d_keys.begin(), d_values.begin()), d_values2.begin())));        
-  std::cout << d_keys[0] << d_keys[1] << std::endl;
-  std::cout << d_values[0] << d_values[1] << std::endl;
+    thrust::make_zip_iterator(thrust::make_tuple(d_values2.begin(), d_values.begin())));        
+    // thrust::make_zip_iterator(thrust::make_tuple(thrust::make_tuple(d_keys.begin(), d_values2.begin()), d_values.begin())));        
   std::cout << d_values2[0] << d_values2[1] << std::endl;
+  std::cout << d_values[0] << d_values[1] << std::endl;
   return 0;
 } 

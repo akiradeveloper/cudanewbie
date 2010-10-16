@@ -2,6 +2,8 @@
 
 #include <thrust/transform.h>
 #include <thrust/functional.h>
+#include <thrust/transform_reduce.h>
+#include <thrust/device_vector.h>
 
 #include <iostream>
 
@@ -31,6 +33,11 @@ int main(void){
     data,
     op);
   print_array(data, len);
+
+  thrust::device_vector<float> dv;
+  dv.push_back(1.0F);
+  float sum = thrust::transform_reduce(dv.begin(), dv.end(), thrust::negate<float>(), 0.0F, thrust::plus<float>());
+  std::cout << sum << std::endl;
   return 0;
 }
     
